@@ -1,24 +1,50 @@
 from django.db import models
+from treenode.models import TreeNodeModel
 
-class Acervo(models.Model):
-    nombre = models.CharField(max_length=200)
-    estatus = models.BooleanField()
-    created_at = models.DateTimeField(auto_now=True)
+class Acervo(TreeNodeModel): # los contenedores
+    treenode_display_field = "nombre"
     
-    def __str__(self):
-        return ' - ' + self.nombre
-
-class VisualImagen(models.Model):
     nombre = models.CharField(max_length=200)
     estatus = models.BooleanField()
     created_at = models.DateTimeField(auto_now=True)
+    class Meta(TreeNodeModel.Meta):
+        verbose_name = "Acervo"
+        verbose_name_plural = "Acervos"
+
+class AcervoCliente(models.Model): # el cliente, relacionado a los usuarios
+    name=models.TextField(max_length=255)
+    estatus = models.BooleanField()
+    created_at = models.DateTimeField(auto_now=True)
+
+class LicenciaTipo(models.Model): # tipos de permisos
+    name=models.TextField(max_length=255)
+    estatus=models.BooleanField(default=True)
+    
+    
+    
+    
+class Imagen(models.Model):
+    titulo = models.CharField(max_length=255)
+    estatus = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now=True)
+    deleted_at = models.DateTimeField(auto_now=True)
+    class Meta:
+        abstract = True
+    
+    
+class VisualImagen(Imagen):
     acervo = models.ForeignKey(Acervo, on_delete=models.CASCADE)
     
-class FisicaImagen(models.Model):
-    nombre = models.CharField(max_length=200)
-    estatus = models.BooleanField()
-    created_at = models.DateTimeField(auto_now=True)
-    visual = models.ForeignKey(VisualImagen, on_delete=models.CASCADE)
+class FisicaImagen(Imagen):
+    contenedor = models.ForeignKey(Acervo, on_delete=models.CASCADE)
+
+class Licencia(models.Model): # Permisos por cliente 1 - M 
+    vigencia = models.DateTimeField(auto_now_add=True)
+    tipo_licencia = models.ForeignKey(LicenciaTipo, on_delete=models.CASCADE)
+    AcervoCliente=models.ForeignKey(AcervoCliente, on_delete=models.CASCADE)
+    VisualImagenes=models.ManyToManyField(VisualImagen)
+
+
 
 class Autor(models.Model):
     nombre = models.CharField(max_length=200)

@@ -1,8 +1,10 @@
 from django.contrib import admin
 from .models import Acervo, VisualImagen, FisicaImagen, Autor, Reprografia, ArchivistaHistoria, Personaje, Editor
+from treenode.admin import TreeNodeModelAdmin
+from treenode.forms import TreeNodeForm
 
 # Register your models here.
-admin.site.register(Acervo)
+# admin.site.register(Acervo)
 admin.site.register(VisualImagen)
 admin.site.register(FisicaImagen)
 admin.site.register(Autor)
@@ -10,3 +12,20 @@ admin.site.register(Reprografia)
 admin.site.register(ArchivistaHistoria)
 admin.site.register(Personaje)
 admin.site.register(Editor)
+
+
+
+
+class AcervoAdmin(TreeNodeModelAdmin):
+
+    # set the changelist display mode: 'accordion', 'breadcrumbs' or 'indentation' (default)
+    # when changelist results are filtered by a querystring,
+    # 'breadcrumbs' mode will be used (to preserve data display integrity)
+    treenode_display_mode = TreeNodeModelAdmin.TREENODE_DISPLAY_MODE_ACCORDION
+    # treenode_display_mode = TreeNodeModelAdmin.TREENODE_DISPLAY_MODE_BREADCRUMBS
+    # treenode_display_mode = TreeNodeModelAdmin.TREENODE_DISPLAY_MODE_INDENTATION
+
+    # use TreeNodeForm to automatically exclude invalid parent choices
+    form = TreeNodeForm
+
+admin.site.register(Acervo, AcervoAdmin)
