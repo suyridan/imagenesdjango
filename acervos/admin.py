@@ -16,6 +16,7 @@ admin.site.register(Editor)
 
 
 
+@admin.register(Acervo)
 class AcervoAdmin(TreeNodeModelAdmin):
 
     # set the changelist display mode: 'accordion', 'breadcrumbs' or 'indentation' (default)
@@ -27,5 +28,3 @@ class AcervoAdmin(TreeNodeModelAdmin):
 
     # use TreeNodeForm to automatically exclude invalid parent choices
     form = TreeNodeForm
-
-admin.site.register(Acervo, AcervoAdmin)

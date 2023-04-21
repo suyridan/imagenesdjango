@@ -5,6 +5,7 @@ RUN mkdir /django-postgres-kube
 WORKDIR /django-postgres-kube
 COPY . .
 
+RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 EXPOSE 8000
