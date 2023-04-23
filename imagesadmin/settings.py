@@ -21,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-7m-iyoqxz76fn4spi-u*weuk3m7lqp&&6el@q=x2dwi82j5y_&"
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['66.175.233.134']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -79,13 +79,14 @@ WSGI_APPLICATION = "imagesadmin.wsgi.application"
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'monitor',
-        'USER': 'postgres',
-        'PASSWORD': 'qwertyuiop',
-        'HOST': '66.175.233.134',
-        'PORT': '5432',
+        'ENGINE': os.environ['DATABASE_ENGINE'],
+        'NAME': os.environ['DATABASE_NAME'],
+        'USER': os.environ['DATABASE_USER'],
+        'PASSWORD': os.environ['DATABASE_PASSWORD'],
+        'HOST': os.environ['DATABASE_HOST'],
+        'PORT': os.environ['DATABASE_PORT']
     }
+    
 }
 
 
@@ -106,7 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
 # LANGUAGE_CODE = "en-us"
-LANGUAGE_CODE = "es-us"
+LANGUAGE_CODE = "es-mx"
 
 TIME_ZONE = "UTC"
 
