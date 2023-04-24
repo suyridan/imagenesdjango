@@ -1,24 +1,11 @@
 from django.contrib import admin
-from .models import Acervo, VisualImagen, FisicaImagen, Autor, Reprografia, ArchivistaHistoria, Personaje, Editor, Contenedor
 from treenode.admin import TreeNodeModelAdmin
 from treenode.forms import TreeNodeForm
+from .models import Ubicacion
 
 # Register your models here.
-# admin.site.register(Acervo)
-admin.site.register(VisualImagen)
-admin.site.register(Acervo)
-admin.site.register(FisicaImagen)
-admin.site.register(Autor)
-admin.site.register(Reprografia)
-admin.site.register(ArchivistaHistoria)
-admin.site.register(Personaje)
-admin.site.register(Editor)
-
-
-
-
-@admin.register(Contenedor)
-class AcervoAdmin(TreeNodeModelAdmin):
+@admin.register(Ubicacion)
+class UbicacionAdmin(TreeNodeModelAdmin):
 
     # set the changelist display mode: 'accordion', 'breadcrumbs' or 'indentation' (default)
     # when changelist results are filtered by a querystring,
