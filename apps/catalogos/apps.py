@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class AcervosConfig(AppConfig):
+class CatalogosConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "acervos"
+    name = "apps.catalogos"
