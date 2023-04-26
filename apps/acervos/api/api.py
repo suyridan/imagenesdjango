@@ -1,5 +1,5 @@
 from rest_framework import viewsets, permissions
-from rest_framework.views import View
+from rest_framework.views import APIView
 
 from apps.acervos.models import Acervo, VisualImagen
 from apps.acervos.api.serializers import AcervoSerializer, VisualImagenSerializer
