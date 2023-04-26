@@ -145,3 +145,17 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 # Media Files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+
+# Email
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
+EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
+EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
+EMAIL_PORT = os.environ['EMAIL_PORT']
+
+
+# Loading from local_settings.py file
+try:
+    from imagesadmin.local_settings import *
+except ImportError:
+    pass
