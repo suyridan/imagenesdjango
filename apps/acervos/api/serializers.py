@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from ..models import Acervo, VisualImagen, FisicaImagen
+from apps.acervos.models import Acervo, VisualImagen, FisicaImagen
 
 class AcervoSerializer(serializers.ModelSerializer):
     class Meta:

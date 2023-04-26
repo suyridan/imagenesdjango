@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from ..models import Ubicacion
+from apps.catalogos.models import Ubicacion
 
 class UbicacionSerializer(serializers.ModelSerializer):
     

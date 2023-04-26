@@ -1,4 +1,4 @@
-from ..models import Ubicacion
+from apps.catalogos.models import Ubicacion
 from rest_framework import viewsets, permissions
 from .serializers import UbicacionSerializer
 

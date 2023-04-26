@@ -1,6 +1,8 @@
-from ..models import Acervo, VisualImagen
 from rest_framework import viewsets, permissions
-from ..api.serializers import AcervoSerializer, VisualImagenSerializer
+from rest_framework.views import View
+
+from apps.acervos.models import Acervo, VisualImagen
+from apps.acervos.api.serializers import AcervoSerializer, VisualImagenSerializer
 
 class AcervoViewSet(viewsets.ModelViewSet):
     queryset = Acervo.objects.all()
