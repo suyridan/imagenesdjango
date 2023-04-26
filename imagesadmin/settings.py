@@ -48,7 +48,7 @@ THIRD_PARTY_APPS =[
 ]
 
 LOCAL_APPS =[
-    "apps.auth",
+    "apps.autenticacion",
     "apps.acervos",
     "apps.catalogos"
 ]
@@ -102,6 +102,9 @@ DATABASES = {
     
 }
 
+# Auth Model
+
+AUTH_USER_MODEL = 'autenticacion.Usuario' 
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
