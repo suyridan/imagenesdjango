@@ -1,5 +1,5 @@
 from rest_framework import routers
-from .api import AcervoViewSet, VisualImagenViewSet
+from .api.api import AcervoViewSet, VisualImagenViewSet
 
 router = routers.DefaultRouter()
 

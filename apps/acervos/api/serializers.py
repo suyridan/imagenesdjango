@@ -1,13 +1,11 @@
 from rest_framework import serializers
-from .models import Acervo, VisualImagen, FisicaImagen
-
+from ..models import Acervo, VisualImagen, FisicaImagen
 
 class AcervoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Acervo
         fields = ('id','name','estatus','created_at')
         read_only_fields = ('created_at', )
-        
         
 class VisualImagenSerializer(serializers.ModelSerializer):
     class Meta:
