@@ -18,14 +18,7 @@ class Acervo(models.Model): # el cliente, relacionado a los usuarios
     
     def __str__(self) -> str:
         return str(self.id) + ' - ' + self.name
-
-class LicenciaTipo(models.Model): # tipos de permisos
-    name=models.CharField(max_length=255)
-    estatus=models.BooleanField(default=True)
-    
-    
-    
-    
+   
 class Imagen(models.Model):
     titulo = models.CharField(max_length=255)
     estatus = models.BooleanField(default=True)
@@ -40,36 +33,41 @@ class Imagen(models.Model):
     
     
 class VisualImagen(Imagen):
-    ubicacion=models.ForeignKey("catalogos.Ubicacion", related_name='imagenes', on_delete=models.CASCADE)
+    ubicacion=models.ForeignKey("catalogos.Ubicacion", on_delete=models.CASCADE)
     titulo_origen = models.CharField(max_length=255)
+    ruta_imagen = models.CharField(max_length=5000)
+    titulo_atribuido = models.CharField()
+    titulo_otro_idioma = models.CharField()
+    rasgo_distintivo = models.CharField()
+    autoria_atribuida = models.CharField()
+    fecha_año = models.SmallIntegerField()
+    fecha_dia = models.SmallIntegerField()
+    fecha_mes = models.SmallIntegerField()
+    fecha_tipo = models.ForeignKey("catalogosImagen.FechaTipo", on_delete=models.CASCADE)
+    pais=models.ForeignKey("catalogos.Pais", on_delete=models.CASCADE)
+    estado=models.ForeignKey("catalogos.Estado", on_delete=models.CASCADE)
+    municipio=models.ForeignKey("catalogos.Municipio", on_delete=models.CASCADE)
+    informacion_adicional = models.TextField()
+    lugar = models.CharField()
+    rol = models.ForeignKey("catalogosImagen.Rol", on_delete=models.CASCADE)
+    epoca = models.ForeignKey("catalogosImagen.Epoca", on_delete=models.CASCADE)
+    funcion_o_genero = models.CharField()
+    grupo = models.ForeignKey("catalogosImagen.Grupo", on_delete=models.CASCADE)
+    tema = models.ForeignKey("catalogosImagen.Tema", on_delete=models.CASCADE)
+    subtema = models.ForeignKey("catalogosImagen.Subtema", on_delete=models.CASCADE)
+    reprografia = models.CharField()
+    obra_repografiada = models.CharField()
+    
+    class Meta():
+        verbose_name = "Imagen Visual"
+        verbose_name_plural = "Imagenes Visuales"
+        
+
     
 class FisicaImagen(Imagen):
     contenedor = models.ForeignKey(Contenedor, on_delete=models.CASCADE)
 
-class Licencia(models.Model): # Permisos por cliente 1 - M 
-    vigencia = models.DateTimeField(auto_now_add=True)
-    tipo_licencia = models.ForeignKey(LicenciaTipo, on_delete=models.CASCADE)
-    Acervo=models.ForeignKey(Acervo, on_delete=models.CASCADE)
-    VisualImagenes=models.ManyToManyField(VisualImagen)
-
-
-
-class Autor(models.Model):
-    nombre = models.CharField(max_length=200)
-    estatus = models.BooleanField()
-    created_at = models.DateTimeField(auto_now=True)
-
-class Personaje(models.Model):
-    nombre = models.CharField(max_length=200)
-    estatus = models.BooleanField()
-    created_at = models.DateTimeField(auto_now=True)
-
 class Reprografia(models.Model):
-    nombre = models.CharField(max_length=200)
-    estatus = models.BooleanField()
-    created_at = models.DateTimeField(auto_now=True)
-
-class Editor(models.Model):
     nombre = models.CharField(max_length=200)
     estatus = models.BooleanField()
     created_at = models.DateTimeField(auto_now=True)

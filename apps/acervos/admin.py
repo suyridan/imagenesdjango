@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Acervo, VisualImagen, FisicaImagen, Autor, Reprografia, ArchivistaHistoria, Personaje, Editor, Contenedor
+from .models import Acervo, VisualImagen, FisicaImagen, Reprografia, ArchivistaHistoria, Contenedor
 from treenode.admin import TreeNodeModelAdmin
 from treenode.forms import TreeNodeForm
 
@@ -8,13 +8,8 @@ from treenode.forms import TreeNodeForm
 admin.site.register(VisualImagen)
 admin.site.register(Acervo)
 admin.site.register(FisicaImagen)
-admin.site.register(Autor)
 admin.site.register(Reprografia)
 admin.site.register(ArchivistaHistoria)
-admin.site.register(Personaje)
-admin.site.register(Editor)
-
-
 
 
 @admin.register(Contenedor)

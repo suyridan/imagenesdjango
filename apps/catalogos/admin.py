@@ -1,9 +1,13 @@
 from django.contrib import admin
 from treenode.admin import TreeNodeModelAdmin
 from treenode.forms import TreeNodeForm
-from .models import Ubicacion
+from .models import Ubicacion, Pais, Estado, Municipio
 
 # Register your models here.
+admin.site.register(Pais)
+admin.site.register(Estado)
+admin.site.register(Municipio)
+
 @admin.register(Ubicacion)
 class UbicacionAdmin(TreeNodeModelAdmin):
 

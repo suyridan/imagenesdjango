@@ -50,7 +50,8 @@ THIRD_PARTY_APPS =[
 LOCAL_APPS =[
     "apps.autenticacion",
     "apps.acervos",
-    "apps.catalogos"
+    "apps.catalogos",
+    "apps.catalogosImagen"
 ]
 
  # Application definition
