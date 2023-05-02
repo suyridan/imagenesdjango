@@ -1,8 +1,6 @@
-from rest_framework import routers
-from .api.api import UbicacionViewSet
+from django.urls import path, include
+from .api.routers import *
 
-router = routers.DefaultRouter()
-
-router.register('api/ubicaciones', UbicacionViewSet, 'ubicaciones')
-
-urlpatterns = router.urls
+urlpatterns = [
+    path('api/', include((router.urls, 'api')), name="catalogos_api")
+]
